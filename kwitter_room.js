@@ -19,7 +19,7 @@ function getData() {
                   childKey = childSnapshot.key;
                   Room_names = childKey;
                   //Start code
-
+                  console.log(Room_names);
                   //End code
             });
       });
@@ -33,5 +33,10 @@ function logout() {
 }
 
 function addRoom() {
-
+      roomname = document.getElementById("roomname").value;
+      firebase.database().ref("/").child(roomname).update({
+            purpose: "Add Roomname"
+      });
+      localStorage.setItem("roomname", roomname);
+      window.location = "kwitter_page.html";
 }
